@@ -1,41 +1,28 @@
-#
-# Roll a die. Try to get as close to eleven without going over.
-# Play against a computer opponent
-#
-
 import random
+myscore = 0
+compscore = 0
+choice = "Nothing"
+while choice != 'n' and myscore < 11:
+    roll = random.randrange(1,7)
+    myscore = myscore + roll 
+    print "You rolled a ", roll 
+    print "Your score is ", myscore
+    choice = raw_input("Roll Again?")
 
-human_score = 0
-computer_score = 0
-MAX = 11
+while compscore < 8:
+    compscore += random.randrange(1,7)
 
-print "Roll a die, get as close to 11 without going over"
-print
+print "Your score is ", myscore
+print "Computer score is ", compscore
 
-choice = None
+if myscore > 11:
+    print "You BUSTED!!"
+elif compscore > 11:
+    print "Computer BUSTED!!!"
+elif myscore == compscore:
+    print "TIE!!"
+elif myscore < compscore:
+    print "You Lose!"
+elif myscore > compscore:
+    print "YOU WIN!!! FIZZ BUZZZZ"
 
-while choice != "s" and human_score < 11:
-    print "Your score is ", human_score
-    choice = raw_input("What do you want to do? Roll(r) or Stand(s)? ")
-
-    if choice == "r":
-    	human_score += random.randrange(1,6)
-
-    if choice == "s":
-    	break
-
-while computer_score < 8:
-	computer_score += random.randrange(1,6)
-
-print "You: ", human_score, " computer: ", computer_score
-
-if human_score > MAX:
-	print "BUSTED! You lose."
-elif computer_score > MAX:
-	print "Computer BUSTED! You win."
-elif human_score < computer_score:
-	print "You lose!"
-elif human_score > computer_score:
-	print "You win!"
-elif human_score == computer_score:
-	print "Tie!"
